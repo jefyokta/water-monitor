@@ -1,0 +1,43 @@
+{
+  "configurations": [
+    {
+      "name": "ESP32-Arduino",
+      "compilerPath": "/Users/jefyokta/Library/Arduino15/packages/esp32/tools/xtensa-esp32-elf-gcc/esp-2021r2-patch5-8.4.0/bin/xtensa-esp32-elf-gcc",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/cores/esp32",
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/variants/esp32",
+
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/libraries/**/",
+
+
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/tools/xtensa-esp32-elf-gcc/esp-2021r2-patch5-8.4.0/include",
+
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/**/",
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/freertos/include/freertos/",
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/esp32",
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/newlib",
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/nvs_flash",
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/vfs",
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/esp_common",
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/esp_system",
+        "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/driver",
+        "${workspaceFolder}/.vscode"
+
+
+      ],
+      "defines": [
+        "ESP32",
+        "ARDUINO=10805",
+        "F_CPU=240000000L",
+        "ARDUINO_ARCH_ESP32",
+        "ARDUINO_BOARD=\"ESP32_DEV\"",
+        "CORE_DEBUG_LEVEL=0"
+      ]
+    }
+  ],
+  "version": 4
+}
