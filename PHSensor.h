@@ -18,7 +18,7 @@ private:
 
   int analogPin;
   int tempPin;
-  float calibration;
+  static float calibration;
   int samples[SAMPLE_COUNT];
   bool inTask;
 
@@ -31,7 +31,7 @@ public:
   void setCalibrationWithVolt(float volt);
   void setCalibration(float value);
   void set(float maxAdc, float refVolt, float calibration);
-
+  float getCalibration();
   float getValue() override;
   PHMembership membership() override;
 

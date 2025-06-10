@@ -3,10 +3,13 @@
 #include <stdexcept>
 #include <string>
 
-Rule::Rule(int inputNum) {
+template<class T>
+Rule<T>::Rule(int inputNum) {
   this->inputNum = inputNum;
 }
-Rule& Rule::when(const std::vector<float>& membershipVals) {
+
+template<class T>
+Rule<T>& Rule<T>::when(const std::vector<float>& membershipVals) {
   if (membershipVals.size() != this->inputNum) {
     throw std::runtime_error(
       "Input rule must have " + std::to_string(this->inputNum) + " elements, but got " + std::to_string(membershipVals.size()));
@@ -14,19 +17,22 @@ Rule& Rule::when(const std::vector<float>& membershipVals) {
   this->currentRule.memberships = membershipVals;
   return *this;
 }
-void Rule::conditionIs(const int condition) {
+
+template<class T>
+void Rule<T>::conditionIs(T condition) {
   this->currentRule.condition = condition;
   this->rules.emplace_back(this->currentRule);
 }
 
-const std::vector<DefinedRule>& Rule::getRules() const {
+template<class T>
+const std::vector<DefinedRule<T>>& Rule<T>::getRules() const {
   return this->rules;
 }
 
-std::vector<DefinedRule> Rule::fulfilled() const {
-  std::vector<DefinedRule> result;
-
-  for (const DefinedRule& rule : this->rules) {
+template<class T>
+std::vector<DefinedRule<T>> Rule<T>::fulfilled() const {
+  std::vector<DefinedRule<T>> result;
+  for (const DefinedRule<T>& rule : this->rules) {
     bool hasZero = std::any_of(
       rule.memberships.begin(),
       rule.memberships.end(),

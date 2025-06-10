@@ -15,12 +15,14 @@ class Fuzzy {
 public:
   void inference();
   float defuzzy();
-
-
+  Fuzzy(PHSensor& ph,
+        TemperatureSensor& temp,
+        UltrasonicSensor& ultra,
+        DissolvedSolid& tds);
 private:
-  PHMembership ph;
-  TemperatureMembership temp;
-  UltrasonicMembership ultra;
-  DissolvedMembership tds;
+  PHSensor* ph;
+  TemperatureSensor* temp;
+  UltrasonicSensor* ultra;
+  DissolvedSolid* tds;
   float min4(float a, float b, float c, float d);
 };

@@ -25,6 +25,7 @@
         "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/esp_common",
         "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/esp_system",
         "/Users/jefyokta/Library/Arduino15/packages/esp32/hardware/esp32/2.0.10/tools/sdk/esp32/include/driver",
+        "/Users/jefyokta/Documents/Arduino/libraries/**",
         "${workspaceFolder}/.vscode"
 
 

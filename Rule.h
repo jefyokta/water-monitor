@@ -3,21 +3,23 @@
 #include <vector>
 #include <stdexcept>
 
+template<typename T>
 struct DefinedRule {
   std::vector<float> memberships;
-  int condition;
+  T condition;
 };
 
+template<typename T>
 class Rule {
 private:
-  std::vector<DefinedRule> rules;
-  DefinedRule currentRule;
+  std::vector<DefinedRule<T>> rules;
+  DefinedRule<T> currentRule;
   int inputNum;
 
 public:
-  Rule(int inputNum); 
-  Rule& when(const std::vector<float>& membershipVals);
-  void conditionIs(const int condition);
-  const std::vector<DefinedRule>& getRules() const;
-  std::vector<DefinedRule> fulfilled() const;
+  Rule(int inputNum);
+  Rule<T>& when(const std::vector<float>& membershipVals);
+  void conditionIs(T condition);
+  const std::vector<DefinedRule<T>>& getRules() const;
+  std::vector<DefinedRule<T>> fulfilled() const;
 };

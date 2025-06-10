@@ -1,21 +1,27 @@
 #include "PHSensor.h"
 
+float PHSensor::calibration = 21.3f;
+
 PHSensor::PHSensor(int analogPin, int tempPin)
-  : analogPin(analogPin), tempPin(tempPin), calibration(21.3f), inTask(false) {}
+  : analogPin(analogPin), tempPin(tempPin), inTask(false) {}
 
 void PHSensor::setCalibration(float value) {
-  this->calibration = value;
+  PHSensor::calibration = value;
 }
 
 void PHSensor::set(float maxAdc, float refVolt, float calibration) {
   this->maxAdc = maxAdc;
   this->refVoltage = refVolt;
-  this->calibration = calibration;
+  PHSensor::calibration = calibration;
 }
 
 float PHSensor::getValue() {
+
   for (int i = 0; i < SAMPLE_COUNT; i++) {
+
     samples[i] = analogRead(analogPin);
+
+
     inTask ? vTaskDelay(30) : delay(30);
   }
   this->sortSamples();
@@ -48,7 +54,7 @@ float PHSensor::calculateVoltage() const {
 }
 
 float PHSensor::convertVoltageToPH(float voltage) const {
-  return -5.70f * voltage + this->calibration;
+  return -5.70f * voltage + PHSensor::calibration;
 }
 
 void PHSensor::calibrate() {
@@ -77,12 +83,12 @@ float PHSensor::getTemperature() {
 
 void PHSensor::setCalibrationWithVolt(float volt) {
 
-  this->calibration = 7.0 - (-5.7 * volt);
+  PHSensor::calibration = 7.0 - (-5.7 * volt);
 }
 
-PHResult PHSensor::membership() {
+PHMembership PHSensor::membership() {
   float ph = this->getValue();
-  PHResult result;
+  PHMembership result;
   result.acidic = (ph < 7.0f) ? (7.0f - ph) / 7.0f : 0.0f;
   result.netral = (ph >= 6.5f && ph <= 7.5f) ? 1.0f : 0.0f;
   result.alkaline = (ph > 7.0f) ? (ph - 7.0f) / 7.0f : 0.0f;
@@ -91,4 +97,9 @@ PHResult PHSensor::membership() {
   result.alkaline = std::min(result.alkaline, 1.0f);
 
   return result;
+}
+
+float PHSensor::getCalibration() {
+
+  return PHSensor::calibration;
 }
